@@ -1,3 +1,5 @@
+import { envs } from './config';
+import { AppRoutes } from './presentation/routes';
 import { Server } from './presentation/server';
 
 (() => {
@@ -8,6 +10,9 @@ async function main() {
 
   // todo: await base de datos
 
-  const server = new Server({ port: 3100 });
+  const server = new Server({ 
+    port: envs.PORT,
+    routes: AppRoutes.routes
+  });
   await server.start();
 }
